@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Chaos Lab</title>
+<meta name="description" content="A WebGPU artificial-life laboratory: mass-conserving Flow-Lenia creatures with their own genomes, feeding, splitting and converting each other in a rock–paper–scissors cycle.">
+<link rel="stylesheet" href="/src/style.css">
+</head>
+<body>
+<canvas id="c" aria-label="Simulation field. Click to place a creature or paint with the selected brush; right-drag or shift-drag to pan; scroll to zoom."></canvas>
+<div id="hud" aria-live="off"></div>
+<div id="help">1–3: drop a creature · 4–5: nutrient, erase · right/shift-drag: pan · wheel: zoom · space: pause · . step · R reset · F follow · H panel</div>
+<aside id="panel" aria-label="Laboratory controls">
+  <h1>Chaos Lab</h1>
+  <div class="sub">Flow-Lenia creatures that feed, split, convert each other in a cycle and mix their genomes.</div>
+  <div class="btns" id="presets" role="group" aria-label="Presets"></div>
+  <p id="blurb"></p>
+  <div id="controls"></div>
+</aside>
+<button id="toggle" aria-label="Toggle control panel" title="Toggle panel (H)">☰</button>
+<div id="unsupported" role="alert" hidden>
+  <div>
+    <h2>Chaos Lab needs WebGPU</h2>
+    <p id="why"></p>
+    <p>Try a recent desktop Chrome or Edge (113+), Safari 26+, or Firefox 141+ on Windows. On Linux, Chrome may need
+      <code>chrome://flags/#enable-unsafe-webgpu</code>. There is no WebGL fallback in this version.</p>
+  </div>
+</div>
+<script type="module" src="/src/main.ts"></script>
+</body>
+</html>

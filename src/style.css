@@ -1,0 +1,63 @@
+:root {
+  --bg: #000; --panel: rgba(10, 12, 16, 0.84); --line: rgba(255, 255, 255, 0.09);
+  --text: #e4e8ec; --muted: #8d97a1; --accent: #4fd8ff; --warn: #ffb547; --bad: #ff5a5a; --good: #5ee28f;
+  --forager: #1ad9ff; --raider: #ff29c7; --cleanser: #ff9e1a;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; height: 100%; background: var(--bg); color: var(--text); overflow: hidden;
+  font: 12px/1.4 ui-sans-serif, -apple-system, "SF Pro Text", Inter, system-ui, sans-serif; }
+canvas#c { position: fixed; inset: 0; width: 100vw; height: 100vh; display: block; cursor: crosshair; touch-action: none; }
+#panel { position: fixed; top: 12px; right: 12px; bottom: 12px; width: 310px; overflow-y: auto;
+  background: var(--panel); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+  border: 1px solid var(--line); border-radius: 12px; padding: 10px 12px 14px; }
+#panel.hidden { display: none; }
+h1 { font-size: 13px; margin: 2px 0 2px; letter-spacing: .02em; }
+.sub { color: var(--muted); margin-bottom: 8px; }
+#blurb { color: var(--muted); margin: 4px 0 8px; min-height: 2.8em; }
+details { border-top: 1px solid var(--line); padding: 6px 0; }
+summary { cursor: pointer; font-weight: 600; color: var(--accent); padding: 2px 0; user-select: none; }
+summary:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+.row { display: grid; grid-template-columns: 112px 1fr 50px; gap: 6px; align-items: center; margin: 5px 0; }
+.row label { color: var(--muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.row output { text-align: right; font-variant-numeric: tabular-nums; }
+input[type=range] { width: 100%; accent-color: var(--accent); }
+input[type=number] { width: 100%; background: #1a1d22; color: inherit; border: 1px solid var(--line); border-radius: 6px; padding: 4px 6px; font: inherit; }
+.chk { display: flex; gap: 6px; align-items: center; margin: 5px 0; color: var(--muted); }
+select, button { background: #1a1d22; color: var(--text); border: 1px solid var(--line); border-radius: 6px;
+  padding: 5px 8px; font: inherit; }
+button { cursor: pointer; }
+button:hover { border-color: var(--accent); }
+button[aria-pressed=true] { border-color: var(--accent); background: #13303a; }
+.btns { display: flex; flex-wrap: wrap; gap: 5px; margin: 6px 0; }
+.tools button { min-width: 0; flex: 1 1 30%; }
+.swatch { display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-right: 5px; vertical-align: 0; }
+#hud { position: fixed; left: 12px; top: 12px; padding: 8px 10px; background: var(--panel);
+  border: 1px solid var(--line); border-radius: 10px; font-variant-numeric: tabular-nums; white-space: pre;
+  pointer-events: none; font-family: ui-monospace, "SF Mono", Menlo, monospace; font-size: 11px; }
+#hud .warn { color: var(--warn); }
+#hud .ok { color: var(--good); }
+#help { position: fixed; left: 50%; bottom: 12px; transform: translateX(-50%); color: var(--muted);
+  background: var(--panel); border: 1px solid var(--line); border-radius: 999px; padding: 5px 12px; pointer-events: none; white-space: nowrap; }
+#toggle { position: fixed; top: 12px; right: 332px; }
+#panel.hidden ~ #toggle { right: 12px; }
+.stats { display: grid; grid-template-columns: 1fr auto; gap: 1px 8px; font-variant-numeric: tabular-nums;
+  font-family: ui-monospace, "SF Mono", Menlo, monospace; font-size: 11px; }
+.stats span:nth-child(odd) { color: var(--muted); }
+canvas.plot { width: 100%; height: 96px; display: block; margin: 6px 0 2px; background: rgba(255,255,255,0.025); border-radius: 6px; }
+.note { color: var(--muted); font-size: 11px; margin: 4px 0; }
+.log { font-family: ui-monospace, "SF Mono", Menlo, monospace; font-size: 10.5px; white-space: pre-wrap; max-height: 260px; overflow-y: auto;
+  background: rgba(255,255,255,0.03); border-radius: 6px; padding: 6px; margin-top: 6px; }
+.log:empty { display: none; }
+.log .pass { color: var(--good); }
+.log .fail { color: var(--bad); }
+#unsupported { position: fixed; inset: 0; display: grid; place-items: center; background: #05070a; padding: 24px; text-align: center; }
+#unsupported[hidden] { display: none; }
+#unsupported > div { max-width: 520px; }
+#unsupported h2 { font-size: 18px; margin: 0 0 10px; }
+#unsupported p { color: var(--muted); }
+#unsupported code { color: var(--text); }
+@media (max-width: 700px) {
+  #panel { width: auto; left: 12px; top: auto; height: 48vh; }
+  #toggle { right: 12px; }
+  #help { display: none; }
+}
