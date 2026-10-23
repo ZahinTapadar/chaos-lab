@@ -1,5 +1,7 @@
 # Chaos Lab
 
+**[Try it live →](https://zahintapadar.github.io/chaos-lab/)** (needs a WebGPU browser)
+
 A WebGPU artificial-life laboratory. Flow-Lenia creatures carry their own genome, feed on a nutrient field, smell each other, hunt and convert one another in a rock–paper–scissors cycle, bud into colonies and blend into new in-between species. Mass is never created by the dynamics, only moved, eaten or converted.
 
 It is a **synthetic ecology**: a playground of local rules, not a model of any real organism or ecosystem.
